@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖影</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body{
+            height: 2000px;
+        }
+        .box{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: plum;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script src="my.js"></script>
+    <script>
+        var oBoxs = document.getElementsByTagName("div");
+
+        document.onmousemove = function (ev) {
+            var v = 0;
+            var ev = ev || window.event;
+            var timer = setInterval(function () {
+                if (v >= oBoxs.length -1){
+                    clearInterval(timer);
+                }
+                oBoxs[v].style.left = ev.clientX +"px";
+                oBoxs[v].style.top = ev.clientY + "px";
+                v++;
+            },30);
+        }
+    </script>
+</body>
+</html>
